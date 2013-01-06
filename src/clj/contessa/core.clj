@@ -1,8 +1,10 @@
 (ns contessa.core
   (:import [com.maxmind.geoip LookupService]))
 
-(defn build-database [file-path]
-  (LookupService. file-path))
+(defn build-database [file-path & options]
+  (LookupService. file-path (if (:cache (apply hash-map options))
+                                LookupService/GEOIP_MEMORY_CACHE
+                                LookupService/GEOIP_STANDARD)))
 
 (defn lookup-ip [db ip-address]
   (let [location (.getLocation db ip-address)]

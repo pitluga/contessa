@@ -2,6 +2,15 @@
   (:use clojure.test
         contessa.core))
 
+(deftest unable-to-find-database
+  (is (thrown? java.io.FileNotFoundException
+               (build-database "foo"))))
+
+(deftest build-database-with-caching
+  (let [db (build-database "GeoLiteCity.dat" :cache true)
+        location (lookup-ip db "98.101.166.2")]
+    (is (= "US" (:country-code location)))))
+
 (deftest lookup-finds-information-for-ip
   (let [db (build-database "GeoLiteCity.dat")]
     (testing "can find a location by ip address"
