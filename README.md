@@ -1,5 +1,7 @@
 # contessa
 
+[![Build Status](https://travis-ci.org/pitluga/contessa.png?branch=master)](https://travis-ci.org/pitluga/contessa)
+
 A Clojure library to interact with the MaxMind free GeoLite City databases. That's a fancy way of saying that if you pass it an IP address, it will give you location data back.
 
 This product includes GeoLite data created by MaxMind, available from http://www.maxmind.com
