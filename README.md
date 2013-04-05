@@ -16,7 +16,7 @@ To use this library, you first need to download a copy of the [GeoLite City](htt
 
 (defn lookup-ip-address []
   (let [db (geo/build-database "/path/to/GeoLiteCity.dat")]
-    (prn (geo/lookup-ip "98.101.166.2"))))
+    (prn (geo/lookup-ip db "98.101.166.2"))))
 
 (lookup-ip-address)
 ; {:country-code "US"
